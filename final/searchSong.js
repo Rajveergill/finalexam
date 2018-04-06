@@ -3,9 +3,9 @@
 const AWS = require('aws-sdk'); 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
-module.exports.getsong = (event, context, callback) => {
+module.exports.searchSong = (event, context, callback) => {
   const params = {
-    TableName: 'Exam1',
+    TableName: 'Exam93',
     Key: {
       id: event.pathParameters.id
     }

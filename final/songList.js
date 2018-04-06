@@ -4,10 +4,10 @@ const AWS = require('aws-sdk');
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 const params = {
-  TableName: 'Exam1',
+  TableName: 'Exam93',
 };
 
-module.exports.songlist = (event, context, callback) => {
+module.exports.songList = (event, context, callback) => {
   dynamoDb.scan(params, (error, result) => {
     if (error) {
       console.error(error);

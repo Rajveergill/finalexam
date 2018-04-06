@@ -7,7 +7,7 @@ module.exports.playlist = (event, context, callback) => {
   
   
   const params = {
-    TableName: 'Exam5',
+    TableName: 'Exam95',
     Item: {
       id: uuid.v1(),
       playlist: data.playlist,

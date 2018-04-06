@@ -1,7 +1,7 @@
-service: final
+service: finalexam
 
 custom:
-  bucket: takehome94
+  bucket: myfinalexam93
 
 provider:
   name: aws
@@ -24,53 +24,45 @@ provider:
       Resource: "*"
     
 functions:
-  addSongs:
-    handler: addSongs.addSongs
+  addFile:
+    handler: addFile.addFile
     events:
       - s3:
           bucket: ${self:custom.bucket}
           event: s3:ObjectCreated:*
   
-  remove:
-    handler: remove.remove
-    events:
-      - s3:
-          bucket: ${self:custom.bucket}
-          event: s3:ObjectRemoved:*
-  
-  get:
-    handler: final/get.get
+  searchSong:
+    handler: final/searchSong.searchSong
     events:
       - http:
           path: final/{id}
           method: get
           cors: true
   
-  list:
-    handler: final/list.list
+  songList:
+    handler: final/songList.songList
     events:
       - http:
           path: final
           method: get
           cors: true
   
-  create:
-    handler: final/create.create
+  playlist:
+    handler: final/playlist.playlist
     events:
       - http:
           path: final
           method: post
           cors: true
-          
 
 
 
 resources:
   Resources:
-    Exam:
+    Exam93:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: Exam
+        TableName: Exam93
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
@@ -80,10 +72,10 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-    Exam5:
+    Exam95:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: Exam5
+        TableName: Exam95
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
