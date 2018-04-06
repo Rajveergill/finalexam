@@ -31,11 +31,18 @@ functions:
           bucket: ${self:custom.bucket}
           event: s3:ObjectCreated:*
   
+  deleteFile:
+    handler: deleteFile.deleteFile
+    events:
+      - s3:
+          bucket: ${self:custom.bucket}
+          event: s3:ObjectRemoved:*
+  
   searchSong:
     handler: final/searchSong.searchSong
     events:
       - http:
-          path: final/{id}
+          path: final/{name}
           method: get
           cors: true
   
@@ -64,10 +71,10 @@ resources:
       Properties:
         TableName: Exam93
         AttributeDefinitions:
-          - AttributeName: id
+          - AttributeName: fileName
             AttributeType: S
         KeySchema:
-          - AttributeName: id
+          - AttributeName: fileName
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1
@@ -77,10 +84,10 @@ resources:
       Properties:
         TableName: Exam95
         AttributeDefinitions:
-          - AttributeName: id
+          - AttributeName: fileName
             AttributeType: S
         KeySchema:
-          - AttributeName: id
+          - AttributeName: fileName
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1

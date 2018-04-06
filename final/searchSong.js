@@ -7,7 +7,7 @@ module.exports.searchSong = (event, context, callback) => {
   const params = {
     TableName: 'Exam93',
     Key: {
-      id: event.pathParameters.id
+      fileName: event.pathParameters.name
     }
   };
 
